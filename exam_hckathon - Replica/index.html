@@ -15,6 +15,11 @@
 <body>
     <!-- Pre-Exam Setup Screen -->
     <div id="setup-screen" class="screen active">
+        <button class="theme-toggle fixed-toggle" id="setup-theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
         <div class="setup-container">
             <div class="logo-section">
                 <div class="logo">🎓</div>
@@ -77,6 +82,10 @@
                     </div>
                 </div>
                 <div class="header-right">
+                    <button class="theme-toggle" id="exam-theme-toggle" aria-label="Toggle Dark Mode">
+                        <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                        <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                    </button>
                     <div class="warning-counter" id="warning-counter">
                         <span class="warning-icon">⚠️</span>
                         <span>Warnings: <strong id="warning-count">0</strong>/5</span>
@@ -164,8 +173,13 @@
                 </main>
 
                 <!-- Activity Log Sidebar -->
-                <aside class="log-sidebar">
-                    <h3>📋 Activity Log</h3>
+                <aside class="log-sidebar" id="log-sidebar">
+                    <div class="sidebar-header">
+                        <h3>📋 Activity Log</h3>
+                        <button id="toggle-log-btn" class="icon-btn" aria-label="Toggle Log">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                        </button>
+                    </div>
                     <div class="log-container" id="activity-log">
                         <!-- Logs will be added here -->
                     </div>
@@ -228,6 +242,11 @@
 
     <!-- Results Screen -->
     <div id="results-screen" class="screen">
+        <button class="theme-toggle fixed-toggle" id="results-theme-toggle" aria-label="Toggle Dark Mode">
+            <svg class="sun-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg class="moon-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
         <div class="results-container">
             <div class="results-header">
                 <div class="result-icon">✅</div>

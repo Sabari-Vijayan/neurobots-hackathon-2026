@@ -301,7 +301,7 @@ function onFaceResults(results) {
             maxY = Math.max(maxY, landmark.y);
         });
 
-        ctx.strokeStyle = isLookingAway ? 'rgba(239, 68, 68, 0.8)' : 'rgba(16, 185, 129, 0.8)';
+        ctx.strokeStyle = isLookingAway ? 'rgba(239, 68, 68, 0)' : 'rgba(16, 185, 129, 0)';
         ctx.lineWidth = 2;
         ctx.strokeRect(
             minX * canvas.width,
@@ -1071,3 +1071,38 @@ document.addEventListener('keydown', (e) => {
         }
     }
 });
+
+// ============================================
+// THEME & UI HANDLING
+// ============================================
+function initTheme() {
+    const savedTheme = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.body.classList.add('dark-theme');
+    }
+
+    const toggleTheme = () => {
+        document.body.classList.toggle('dark-theme');
+        const isDark = document.body.classList.contains('dark-theme');
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    };
+
+    // Attach listeners to all theme buttons
+    document.querySelectorAll('.theme-toggle').forEach(btn => {
+        btn.addEventListener('click', toggleTheme);
+    });
+
+    // Log Sidebar Toggle
+    const toggleLogBtn = document.getElementById('toggle-log-btn');
+    const logSidebar = document.getElementById('log-sidebar');
+    
+    toggleLogBtn?.addEventListener('click', () => {
+        logSidebar.classList.toggle('collapsed');
+        // Optional: save preference
+    });
+}
+
+// Initialize theme immediately
+initTheme();
