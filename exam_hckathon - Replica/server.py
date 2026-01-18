@@ -90,7 +90,7 @@ def get_questions():
 
     try:
         print("[API] Generating questions with Gemini...")
-        model = genai.GenerativeModel("gemini-1.5-flash")
+        model = genai.GenerativeModel("gemini-2.0-flash")
         
         prompt = """
         Generate 5 unique, challenging exam questions for a Computer Science exam.
