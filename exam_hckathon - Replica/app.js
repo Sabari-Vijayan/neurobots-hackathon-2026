@@ -57,8 +57,11 @@ const state = {
     isSetupComplete: false
 };
 
-// Exam questions
-const examQuestions = [
+// Exam questions container
+let examQuestions = [];
+
+// Fallback questions (if API fails)
+const fallbackQuestions = [
     {
         id: 1,
         text: "Explain the concept of Object-Oriented Programming (OOP) and list its four main principles with brief descriptions.",
@@ -85,6 +88,21 @@ const examQuestions = [
         topic: "Databases"
     }
 ];
+
+async function fetchQuestions() {
+    try {
+        // Use relative URL to work with Flask serving static files
+        const response = await fetch('/api/questions');
+        if (!response.ok) throw new Error('API request failed');
+        
+        examQuestions = await response.json();
+        console.log('Questions loaded from API');
+    } catch (err) {
+        console.error('Error fetching questions:', err);
+        console.log('Using offline question set');
+        examQuestions = [...fallbackQuestions];
+    }
+}
 
 // Verification questions (based on exam answers)
 const verificationQuestions = [
@@ -1004,6 +1022,9 @@ document.getElementById('submit-exam-btn')?.addEventListener('click', () => {
 // INITIALIZATION
 // ============================================
 async function init() {
+    // Fetch questions from API
+    await fetchQuestions();
+
     // Check inputs for enabling start button
     const checkInputs = () => {
         const name = document.getElementById('student-name').value.trim();

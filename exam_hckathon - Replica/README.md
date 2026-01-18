@@ -29,16 +29,29 @@ conda activate exam_hack
 
 ```bash
 # Install required packages
-pip install numpy pandas scikit-learn joblib
+pip install numpy pandas scikit-learn joblib flask google-generativeai python-dotenv
 ```
 
 Or using conda:
 
 ```bash
 conda install numpy pandas scikit-learn joblib -y
+pip install flask google-generativeai python-dotenv
 ```
 
-### Step 3: Navigate to Project Folder
+### Step 3: Setup Gemini API (Optional)
+
+1. Get your API key from [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Create a `.env` file in the project root:
+   ```bash
+   cp .env.example .env
+   ```
+3. Edit `.env` and add your key:
+   ```
+   GEMINI_API_KEY=your_actual_api_key_here
+   ```
+
+### Step 4: Navigate to Project Folder
 
 ```bash
 cd path/to/project_root
@@ -137,7 +150,8 @@ python test_model.py
 ├── test_model.py          # Tests and evaluates the model
 ├── behavior_dataset.csv   # Generated after running generate_dataset.py
 ├── behavior_model.pkl     # Generated after running train_model.py
-├── server.py              # Simple HTTP server for the web demo
+├── server.py              # Flask server with Gemini API integration
+├── .env.example           # Template for environment variables
 ├── index.html             # Web demo interface
 ├── app.js                 # Web demo logic
 └── styles.css             # Web demo styling
